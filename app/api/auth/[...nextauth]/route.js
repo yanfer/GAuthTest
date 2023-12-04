@@ -19,19 +19,16 @@ const authOptions = {
           const userExists = await User.findOne({ email });
 
           if (!userExists) {
-            const res = await fetch(
-              'https://main--nimble-belekoy-d20bbb.netlify.app/api/user',
-              {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  name,
-                  email,
-                }),
-              }
-            );
+            const res = await fetch('http://localhost:3000/api/user', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                name,
+                email,
+              }),
+            });
 
             if (res.ok) {
               return user;
